@@ -1,0 +1,144 @@
+
+    <html>
+
+        <style>
+            textarea {color: red; font-size:30;background:skyblue}
+            
+        .calculate {
+        color: rgb(0, 0, 0);
+        min-height: 40px;
+        border-radius: inherit;
+        padding: 0 1.618em;
+        background-size: inherit;
+        background-image: inherit;
+        position: relative;
+        z-index: 1;}
+
+
+        button[type=one],button[type=three],button[type=five],button[type=nine],
+        button[type=seven]{
+        background-color: #04AA6D;
+        border: none;
+        color: rgb(255, 255, 255);
+        padding: 16px 32px;
+        text-decoration:dashed;
+        margin: 4px 2px;
+        cursor: pointer;
+        }
+        button[type=two],button[type=four],button[type=six],button[type=eight] {
+        background-color: #964932;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+        }
+
+        button[type=C],button[type=Del] {
+        background-color: #1800a0;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;}
+
+        .buttonss{background-color:rgb(199, 193, 193);
+        width:500px;
+        margin: 40 auto;}
+        .full_calc{background-color:bisque; width:500px;height: 500px;; margin: 10 auto}
+
+        canvas
+        {
+            background-color:rgb(154, 86, 180);
+            border-radius: 1%;
+            border-image-width: auto;
+        }
+        </style>
+        <body>
+        <div class="full_calc">
+        <textarea id='rslt' readonly=true name="rslt" rows="2" cols="20"></textarea>
+            <div class="buttonss">
+                <button type="one" onclick='rslt_calc()'>1</button>
+                <button type="two">2</button>
+                <button type="three">3</button>
+                <button type="C"> CE </button>
+                <br>
+                <button type="four">4</button>
+                <button type="five">5</button>
+                <button type="six">6</button>
+                <button type="Del">Del</button>
+                <br>
+                <button type="seven">7</button>
+                <button type="eight">8</button>
+                <button type="nine">9</button>
+                <br>
+                <button type="zero">0</button>
+                <button type="plus">+</button>
+                <button type="minus">-</button>
+                <button type="divide">/</button>
+                <button type="multiply">*</button>
+            </div>
+        </div>
+            <BR>
+            <br>
+        <button class="calculate" type='button' onclick='generaterand()'>Calculate</button>
+        <BR>
+        <textarea id='result' readonly=true name="result" rows="2" cols="20"></textarea>
+
+        <br>
+        <canvas id='myCanvas'>This is canvas</canvas>
+        <br>
+        <button type='button' onclick='loop()'>RUN</button>
+        <br>
+        <button type='button' onclick='clears()'>Clear</button>
+
+
+        </body>
+        <script>
+            
+
+            function rslt_calc()
+            {
+                document.getElementById("rslt").value = 1;
+            }
+            function generaterand()
+            {
+                document.getElementById("result").value = Math.random();
+            }
+        
+            const canvas = document.getElementById('myCanvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 600;
+            canvas.height = 600;
+            const colors = ['rgba(255, 0, 0, 0.2)', 'rgba(0, 255, 0, 0.2)', 'rgba(0, 0, 255, 0.2)'];
+
+            function run()
+            {
+                ctx.fillStyle = 'green';
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.beginPath();
+                // ctx.arc(this.x, this.y, this.r, 0, 2*Math.PI);
+                this.r = 20; this.x = 300; this.y=300;
+                ctx.rect(this.x+200*Math.random(), this.y+200*Math.random(), this.r,20);       
+                ctx.fill();
+            } 
+             
+            const dots = colors.map(function(color){return new Dot(color)});
+
+        
+            function loop()
+            {
+                run();
+            }
+
+           function clears(){
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+           }
+
+        </script>
+        <br>
+        
+        </html>
+    
